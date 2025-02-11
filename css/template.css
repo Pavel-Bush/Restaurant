@@ -1,0 +1,190 @@
+/* -----------------------------------*/
+/* ---------->>> GLOBAL <<<-----------*/
+/* -----------------------------------*/
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Open Sans', sans-serif;
+}
+
+html,
+body {
+	min-height: 100%;
+	overflow: hidden;
+}
+
+body {
+	background: #727272;
+}
+
+/* -----------------------------------*/
+/* ---------->>> HEADER <<<-----------*/
+/* -----------------------------------*/
+
+.switcher-bar {
+	background: #333;
+	border-bottom: 1px solid #444;
+	max-height: 60px;
+	position: relative;
+	z-index: 22;
+}
+
+.logo {
+	border-right: 1px solid #444;
+}
+
+.logo a {
+	display: block;
+	max-height: 60px;
+}
+
+.logo a img {
+	display: block;
+	height: auto;
+	max-height: 100%;
+	max-width: 100%;
+	width: auto;
+}
+
+.logo.textual a {
+	color: #9b9b9b;
+	font-size: 19px;
+	font-weight: 700;
+	line-height: 50px;
+	padding: 0 20px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.header-btn {
+	position: relative;
+}
+
+.header-btn a {
+	border-left: 1px solid #444;
+	display: block;
+	font-size: 24px;
+	height: 60px;
+	padding: 0;
+	width: 60px;
+	text-decoration: none;
+}
+
+.header-btn a:before {
+	color: #9b9b9b;
+	left: 18px;
+	position: absolute;
+	top: 18px;
+}
+
+.header-btn a.icon-tablet {
+	font-size: 30px;
+}
+
+.header-btn a.icon-tablet:before {
+	left: 21px;
+	position: absolute;
+	top: 16px;
+}
+
+.header-btn a.icon-mobile-phone {
+	font-size: 30px;
+}
+
+.header-btn a.icon-mobile-phone:before {
+	left: 23px;
+	position: absolute;
+	top: 16px;
+}
+
+.header-btn a.icon-remove {
+	font-size: 24px;
+}
+
+.header-btn a.icon-remove:before {
+	left: 21px;
+	position: absolute;
+	top: 18px;
+}
+
+.header-btn a:hover,
+.header-btn.current a {
+	background: #222;
+	text-decoration: none;
+}
+
+.header-btn a:hover:before,
+.header-btn.current a:before {
+	color: #fff;
+}
+
+.purchase-btn {
+	background: #7ac64d;
+}
+
+.purchase-btn a {
+	border: none !important;
+}
+
+.purchase-btn a:before {
+	color: #fff !important;
+}
+
+.remove-btn a {
+	border: none !important;
+}
+
+.header-btn a:focus,
+.product-switcher a:focus {
+	outline: none;
+}
+
+.product-switcher {
+	position: relative;
+	background: #222;
+}
+
+.product-switcher a:before {
+	content: '+';
+	left: 20px;
+	position: absolute;
+	top: 4px;
+}
+
+.product-switcher a {
+	color: #9b9b9b;
+	display: block;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 50px;
+	max-height: 60px;
+	padding: 5px 40px 5px 40px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.product-switcher a span {
+	font-family: sans-serif;
+}
+
+.product-switcher a {
+	position: relative;
+}
+
+.product-switcher .badge {
+	background: #e66346;
+	border-radius: 0;
+	color: #fff;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 9px;
+	font-weight: 300;
+	position: relative;
+	top: -3px;
+	right: -20px;
+	display: none;
+}

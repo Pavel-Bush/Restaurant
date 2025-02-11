@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<title>Restaurant</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link rel="stylesheet" href="css/nav_burg.css" />
+		<link rel="stylesheet" href="css/home.css" />
+	</head>
+
+	<body>
+		<header>
+			<nav class="navbar">
+				<div class="logo">Resta</div>
+				<ul class="nav-links">
+					<li><a href="./index.html">Home</a></li>
+					<li><a href="./menu.html">Menu</a></li>
+					<li><a href="./about.html">About</a></li>
+					<li><a href="./reviews.html">Reviews</a></li>
+					<li><a href="./contacts.html">Contact</a></li>
+				</ul>
+				<a href="#book" class="book-table">Book a table</a>
+			</nav>
+
+			<div class="hamburger-menu">
+				<input id="menu__toggle" type="checkbox" />
+				<label class="menu__btn" for="menu__toggle">
+					<span></span>
+				</label>
+
+				<ul class="menu__box">
+					<li><a class="menu__item" href="./index.html">Home</a></li>
+					<li><a class="menu__item" href="./menu.html">Menu</a></li>
+					<li><a class="menu__item" href="./about.html">About</a></li>
+					<li><a class="menu__item" href="./reviews.html">Reviews</a></li>
+					<li><a class="menu__item" href="./contacts.html">Contact</a></li>
+				</ul>
+			</div>
+		</header>
+
+		<div class="about_area">
+			<div class="flex-box flex-row">
+				<div>
+					<div class="about-text">
+						<h3>Sed ut perspiciatis unde omnis iste natus</h3>
+
+						<p>
+							Вся эта неприятная ошибка вернет нас к болезненной жалобе, все
+							откроется, и окажется, что это от настоящего изобретателя и почти
+							то же самое. Фотобудка в Стамптауне, сумка-тоут everything banksy,
+							небольшая партия фильмов freegan bandwidth. Фотобудка с крафтовым
+							пивным супом seitan routine и 8-битовыми чипсами из капусты
+							создают закуски chillwave deep vow. Прибывают делегаты, Марфа
+							пинтерест.
+						</p>
+						<ul class="food_list no-bullets">
+							<li>
+								<img src="img/svg_icon/salad.svg" alt="" />
+								<span>Fresh Ingredients</span>
+							</li>
+							<li>
+								<img src="img/svg_icon/tray.svg" alt="" />
+								<span>Expert cooker</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div>
+					<div class="about_img">
+						<img src="img/about/cooker.png" alt="" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="gallery_area">
+			<div class="section_title text-center">
+				<h3>Photo Gallery</h3>
+			</div>
+			<div class="single_gallery big_img">
+				<img src="img/gallery/1.png" alt="" />
+			</div>
+			<div class="single_gallery small_img">
+				<img src="img/gallery/2.png" alt="" />
+			</div>
+			<div class="single_gallery small_img">
+				<img src="img/gallery/3.png" alt="" />
+			</div>
+			<div class="single_gallery small_img">
+				<img src="img/gallery/4.png" alt="" />
+			</div>
+			<div class="single_gallery small_img">
+				<img src="img/gallery/5.png" alt="" />
+			</div>
+			<div class="single_gallery big_img">
+				<img src="img/gallery/6.png" alt="" />
+			</div>
+		</div>
+
+		<div class="booking-container" id="book">
+			<h1 class="booking-title">Book a Table</h1>
+			<form class="booking-form">
+				<div class="form-row">
+					<div class="form-group">
+						<label class="form-label" for="name">
+							Your Name
+							<input
+								class="form-input"
+								type="text"
+								id="name"
+								name="name"
+								placeholder="Enter your name"
+								required
+							/>
+						</label>
+					</div>
+					<div class="form-group">
+						<label class="form-label" for="phone">
+							Phone no.
+							<input
+								class="form-input"
+								type="tel"
+								id="phone"
+								name="phone"
+								placeholder="Enter your phone number"
+								required
+							/>
+						</label>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group">
+						<label class="form-label" for="date">
+							Date
+							<input
+								class="form-input"
+								type="date"
+								id="date"
+								name="date"
+								required
+							/>
+						</label>
+					</div>
+					<div class="form-group">
+						<label class="form-label" for="person">
+							Person
+							<input
+								class="form-input"
+								type="number"
+								id="person"
+								name="person"
+								min="1"
+								max="20"
+								placeholder="1-20"
+								required
+							/>
+						</label>
+					</div>
+				</div>
+				<button class="booking-button" type="submit">Book</button>
+			</form>
+
+			<div class="contact-info">
+				<p><strong>Address:</strong> 20/D, Kings road, Green lane</p>
+				<p><strong>Reservation:</strong> +10 673 567 367</p>
+			</div>
+		</div>
+	</body>
+</html>
