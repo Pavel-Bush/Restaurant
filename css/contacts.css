@@ -53,20 +53,6 @@ p {
 	font-size: 1.2rem;
 }
 
-@media (max-width: 1140px) {
-	div {
-		margin-bottom: 0vh;
-	}
-
-	.footer .logo {
-		margin: 0;
-	}
-
-	.footer {
-		justify-content: center;
-	}
-}
-
 @media (max-width: 901px) {
 	html {
 		font-size: 12px;
@@ -99,7 +85,7 @@ p {
 	}
 
 	.info {
-		max-width: 66vw;
+		max-width: 70vw;
 	}
 	.info p {
 		font-size: 1.1rem;
@@ -113,7 +99,7 @@ p {
 	.info p {
 		width: 100%;
 		font-size: 1.2rem;
-		margin: 1vh 0;
+		margin: 1vh 2vh;
 		padding: 0vh;
 	}
 }

@@ -5,13 +5,13 @@
 .container {
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 2rem;
+	padding: 4rem;
 }
 
 .menu-nav {
 	display: flex;
 	justify-content: center;
-	margin-top: 5rem;
+	margin-top: 7rem;
 	gap: 4rem;
 	margin-bottom: 3rem;
 }
