@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ресторан</title>
+    <link rel="stylesheet" href="css/contacts.css">
+    <link rel="stylesheet" href="css/nav_burg.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Resta</div>
+            <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./menu.html">Menu</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./reviews.html">Reviews</a></li>
+                <li><a href="./contacts.html">Contact</a></li>
+            </ul>
+            <a href="#book" class="book-table">Book a table</a>
+        </nav>
+
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+                <span></span>
+            </label>
+
+            <ul class="menu__box">
+                <li><a class="menu__item" href="./index.html">Home</a></li>
+                <li><a class="menu__item" href="./menu.html">Menu</a></li>
+                <li><a class="menu__item" href="./about.html">About</a></li>
+                <li><a class="menu__item" href="./reviews.html">Reviews</a></li>
+                <li><a class="menu__item" href="./contacts.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <h1 class="hero">Контакты</h1>
+    
+    <!-- Контейнер для изображения и карты -->
+    <div class="image-map-container">
+        <img src="img/contacts/restaurant.webp" alt="Ресторан">
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ad53c50ff5ee966a970c9a7744854a28f804b947d20602b7db8213ad162220c6f&amp;source=constructor" frameborder="0"></iframe>
+    </div>
+    
+    <div class="info">
+        <p><strong>Адрес:</strong> Минский район, а/к Ждановичи, Звёздная улица, 18</p>
+        <p><strong>Телефон:</strong> +375 (29) 295-26-26</p>
+        <p><strong>Режим работы:</strong> с 12:00 до 23:00</p>
+        <p><strong>Email:</strong> info@zaslonov.by</p>
+    </div>
+
+<div class="booking-container" id="book">
+      <h1 class="booking-title">Book a Table</h1>
+      <form class="booking-form">
+        <div class="form-column">
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label" for="name">
+                    Your Name
+                    <input
+                        class="form-input"
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        required
+                    />
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="phone">
+                    Phone no.
+                    <input
+                        class="form-input"
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter your phone number"
+                        required
+                    />
+                    </label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label" for="date">
+                    Фамилия
+                    <input
+                    class="form-input"
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                    />
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="person">
+                    Person
+                    <input
+                        class="form-input"
+                        type="number"
+                        id="person"
+                        name="person"
+                        min="1"
+                        max="20"
+                        placeholder="1-20"
+                        required
+                    />
+                    </label>
+                </div>
+            </div>
+            <div class="form-group description">
+                <label class="form-label" for="description">
+                    Обращение
+                </label>
+                    <textarea
+                        class="form-input"
+                        id="description"
+                        name="description"
+                        placeholder="Введите ваше обращение"
+                        rows="4"
+                        maxlength="500" 
+                        required
+                    ></textarea>
+               
+            </div>
+            <button class="booking-button" type="submit">Book</button>
+
+        </div>
+        
+      </form>
+
+    </div>
+
+    <footer class="footer">
+        <div class="logo">ДРУЗЬЯ</div>
+        <div class="footer-info">
+            <p class="small-text">ООО «Ресторан-пивоварня ДРУЗЬЯ», УНП 192135107<br>
+            220100, Республика Беларусь, г. Минск, ул. Кульман, 40<br>
+            Регистрация ЕГР: 04.10.2013, Мингорисполком, рег.номер 192135107<br>
+            Лицензия: 07.05.2014, Мингорисполком, номер в ЕРЛ 40200000013133<br>
+            Торговый реестр Республики Беларусь: 07.05.2014</p>
+            <div class="contact-info">
+                <p><strong>Email:</strong> info@zaslonov.by</p>
+                <p><strong>Телефон:</strong> +375 (29) 295-26-26</p>
+                <p><strong>Адрес:</strong> Минский район, а/к Ждановичи, Звёздная улица, 18</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
