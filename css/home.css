@@ -43,17 +43,15 @@ h6 {
 .about_area h3,
 .section_title {
 	font-family: 'Philosopher', sans-serif;
-	font-size: 40px;
+	font-size: 2.5rem;
 	color: #001d38;
-	line-height: 60px;
 	margin-bottom: 0;
 	margin-top: 0;
 }
 
 .about_area p,
 .about_area span {
-	font-size: 24px;
-	line-height: 28px;
+	font-size: 1.75rem;
 	color: #596672;
 	margin-bottom: 20px;
 }
@@ -63,6 +61,91 @@ h6 {
 	-moz-border-radius: 20px;
 	border-radius: 20px;
 	width: 100%;
+}
+
+.no-bullets {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.gallery_area {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 1rem;
+}
+
+.section_title {
+	margin-bottom: 2rem;
+}
+
+.section_title h3 {
+	font-size: 2.5rem;
+	color: #001d38;
+	margin-top: 0;
+}
+
+.gallery-wrapper {
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	gap: 1rem;
+}
+
+.single_gallery {
+	overflow: hidden;
+	border-radius: 8px;
+}
+
+.single_gallery img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.single_gallery.big {
+	grid-column: span 4;
+}
+
+.single_gallery.small {
+	grid-column: span 3;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+	.gallery-wrapper {
+		grid-template-columns: repeat(6, 1fr);
+	}
+
+	.single_gallery.big,
+	.single_gallery.small {
+		grid-column: span 2;
+	}
+}
+
+@media (max-width: 768px) {
+	.gallery-wrapper {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.single_gallery.big,
+	.single_gallery.small {
+		grid-column: span 1;
+	}
+}
+
+@media (max-width: 480px) {
+	.gallery-wrapper {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.single_gallery.big,
+	.single_gallery.small {
+		grid-column: span 1;
+	}
+}
+
+.text-center {
+	text-align: center;
 }
 
 .booking-container {
@@ -79,7 +162,9 @@ h6 {
 
 .booking-title {
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 1.5rem;
+	margin-top: 0.5rem;
+	font-size: 2.5rem;
 }
 
 .booking-form {
@@ -96,11 +181,6 @@ h6 {
 
 .form-group {
 	flex: 1;
-	margin-right: 10px;
-}
-
-.form-group:last-child {
-	margin-right: 0;
 }
 
 .form-label {
@@ -140,104 +220,38 @@ h6 {
 	text-align: center;
 }
 
-.no-bullets {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-}
-
-.gallery_area {
-	overflow: hidden;
-	padding-top: 20px;
-	width: 100%;
-	height: 120vh;
-}
-
-.gallery_area .single_gallery {
-	float: left;
-	overflow: hidden;
-	border: 5px solid #fff;
-	box-sizing: border-box;
-}
-.gallery_area .section_title {
-	height: 5%;
-	margin-bottom: 2%;
-}
-
-.gallery_area .single_gallery.small_img {
-	width: 30%;
-	height: 40%;
-}
-
-.gallery_area .single_gallery.big_img {
-	width: 40%;
-	height: 40%;
-}
-.gallery_area .single_gallery img {
-	height: 100%;
-	width: 100%;
-}
-
-.text-center {
-	text-align: center;
-}
-
-@media (max-width: 991px) {
-	.gallery_area {
-		height: 95vh;
-	}
-}
-
-@media (max-width: 767px) {
-	.gallery_area {
-		height: 80vh;
-		padding-top: 0;
-	}
-	.gallery_area .section_title h3 {
-		font-size: 35px;
-		line-height: 40px;
-	}
+@media (max-width: 768px) {
 	.about-text h3 {
-		font-size: 30px;
-		line-height: 40px;
+		font-size: 2.3rem;
 	}
 	.about-text p,
 	.about-text span {
-		font-size: 16px;
-		line-height: 24px;
+		font-size: 1.5rem;
 	}
 	.about-text .food_list img {
-		width: 30px;
-		height: 30px;
+		width: 2rem;
+		height: 2rem;
 	}
 	.about_area {
 		padding-bottom: 10px;
 	}
+	.about-text {
+		max-width: 90vw;
+	}
+	.about_img {
+		max-width: 90vw;
+		margin-top: 2vh;
+		margin-left: 0;
+	}
+	.about_img img {
+		width: 100%;
+	}
+	.about_area .flex-row {
+		flex-direction: column;
+	}
 }
 
 @media (max-width: 617px) {
-	.gallery_area {
-		height: 90vh;
-	}
-	.about_area {
-		padding-top: 50px;
-	}
-	.about-text .food_list img {
-		width: 30px;
-		height: 30px;
-	}
-	.about-text p,
-	.about-text span {
-		font-size: 14px;
-		line-height: 20px;
-	}
-	.gallery_area .single_gallery.big_img {
-		display: none;
-	}
-	.gallery_area .single_gallery.small_img {
-		width: 50%;
-	}
-
 	.booking-form .form-row {
 		flex-direction: column;
 	}
@@ -251,24 +265,8 @@ h6 {
 	.booking-container {
 		max-width: 400px;
 	}
-}
-
-@media (max-width: 530px) {
-	.gallery_area {
-		height: 70vh;
-	}
-	.gallery_area .section_title h3 {
-		font-size: 27px;
-		line-height: 35px;
-	}
-	.about-text h3 {
-		font-size: 25px;
-		line-height: 32px;
-	}
-	.about-text p,
-	.about-text span {
-		font-size: 14px;
-		line-height: 14px;
+	.about_area {
+		padding-top: 50px;
 	}
 }
 
@@ -276,27 +274,14 @@ h6 {
 	.book-table {
 		margin-right: 25px;
 	}
-	.gallery_area {
-		height: 65vh;
-	}
-	.about-text {
-		max-width: 90vw;
-	}
-	.about_img {
-		max-width: 90vw;
-		margin-top: 2vh;
-		margin-left: 0;
-	}
-	.about_img img {
-		width: 100%;
-	}
+
 	.about-text h3 {
-		font-size: 20px;
-		line-height: 25px;
+		font-size: 2rem;
 	}
 	.about-text p,
 	.about-text span {
 		margin-top: 5px;
+		font-size: 1.4rem;
 	}
 
 	.booking-form .form-row {
@@ -313,18 +298,9 @@ h6 {
 	.booking-container {
 		max-width: 320px;
 	}
-	.about_area .flex-row {
-		flex-direction: column;
-	}
 }
 
 @media (max-width: 369px) {
-	.gallery_area {
-		height: 60vh;
-	}
-	.booking-title {
-		font-size: 1.5em;
-	}
 	.booking-form .form-group .form-input {
 		padding: 5px;
 		width: 150px;

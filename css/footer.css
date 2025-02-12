@@ -1,0 +1,161 @@
+.footer {
+	background-color: #2b2b2b;
+	padding: 2vh 3vw;
+	color: #fff;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 100%;
+	box-sizing: border-box;
+}
+.contact-info {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin-bottom: 2vh;
+}
+
+.footer-info {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin-bottom: 2vh;
+}
+
+.footer .logo {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #dd963f;
+	margin: 0 2vw 1vh 0;
+}
+
+.small-text {
+	display: inline;
+	font-size: 0.75rem;
+	color: #ccc;
+}
+
+.contact-info p {
+	color: white;
+	display: inline;
+	margin: 1vh 1vw;
+	float: left;
+	font-size: 1rem;
+}
+
+@media (max-width: 1140px) {
+	.contact-info {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		width: 100%;
+		max-width: 300px;
+	}
+
+	.contact-info p {
+		display: block;
+		margin: 1vh 0;
+		float: none;
+		width: 100%;
+	}
+
+	.footer {
+		padding: 0px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+	}
+
+	.footer-info {
+		display: flex;
+		align-items: center;
+	}
+
+	.small-text {
+		display: flex;
+		align-items: center;
+	}
+
+	.footer .logo {
+		margin: 0;
+	}
+}
+
+@media (max-width: 720px) {
+	.contact-info p {
+		padding: 0vh;
+	}
+
+	.contact-info {
+		padding-top: 1vh;
+	}
+
+	.small-text {
+		padding: 1vh;
+	}
+}
+
+@media (max-width: 901px) {
+	html {
+		font-size: 12px; /* Устанавливаем базовый размер шрифта */
+	}
+}
+
+@media (max-width: 800px) {
+	.info {
+		max-width: 60vw;
+		padding: 1vh 1vw;
+		margin: 2vh auto;
+	}
+}
+
+@media (max-width: 700px) {
+	.footer {
+		flex-direction: column;
+		align-items: center;
+		padding: 2vh 5vw;
+	}
+
+	.footer .logo {
+		margin-bottom: 0vh;
+	}
+
+	.contact-info {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		max-width: 300px;
+		margin: 0vh;
+		padding-top: 1vh;
+	}
+
+	.contact-info p {
+		padding: 1vh;
+		margin: 0vh;
+	}
+
+	.small-text {
+		padding: 1vh;
+		width: 100%;
+		margin-top: 0vh;
+	}
+}
+
+@media (max-width: 600px) {
+	.footer-info p {
+		font-size: 10px;
+		margin: 0;
+	}
+
+	.contact-info p {
+		font-size: 1.2rem;
+	}
+}
+
+@media (max-width: 470px) {
+	.footer-info {
+		display: flex;
+		flex-direction: column-reverse;
+		align-items: flex-start;
+	}
+}
