@@ -1,351 +1,202 @@
-html {
-    font-size: 14px; /* Устанавливаем базовый размер шрифта */
-   position: relative;
-   min-height: 100%;
-   
-}
-
 body {
-    background: #fffbf5;
-    font-family: 'Georgia', serif;
-    margin: 0 auto;
-    text-align: center;
-    min-height: 100%;
+	background: #fffbf5;
+	font-family: 'Georgia', serif;
+	margin: 0 auto;
+	text-align: center;
+	min-height: 100%;
 }
 
 .hero {
-    margin-bottom: 2vh;
-    margin-top: 0;
-    padding-top: 8rem;
-    font-size: 2.5rem; 
-    color: #333;
+	margin-bottom: 2vh;
+	margin-top: 0;
+	padding-top: 8rem;
+	font-size: 2.5rem;
+	color: #333;
 }
-
-
 
 .image-map-container {
-    display: flex;
-    justify-content: center; /* Центрируем элементы по горизонтали */
-    align-items: center; /* Центрируем элементы по вертикали */
-    gap: 2vw; /* Отступ между изображением и картой */
-    margin-bottom: 2vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2vw;
+	margin-bottom: 2vh;
 }
 
-img, iframe {
-    width: 40vw; /* Ширина изображения и карты */
-    height: 30vw; /* Высота изображения и карты */
-    border-radius: 20px;
+img,
+iframe {
+	width: 40vw;
+	height: 30vw;
+	border-radius: 20px;
 }
 
 .info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 55vw;
-    padding: 2vh 2vw;
-    margin: 2vh auto;
-    background: #f1ae5cd1;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	max-width: 55vw;
+	padding: 2vh 2vw;
+	margin: 2vh auto;
+	background: #f1ae5cd1;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
 }
 
 p {
-    width: 45%;
-    margin: 1vh 0;
-    padding: 1vh;
-    text-align: left;
-    font-size: 1rem; /* Используем rem для размера шрифта */
+	width: 45%;
+	margin: 1vh 0;
+	padding: 1vh;
+	text-align: left;
+	font-size: 1rem;
 }
 
 .info p {
-
-    font-size: 1.2rem; /* Используем rem для размера шрифта */
+	font-size: 1.2rem;
 }
 
-.footer {
-    background-color: #2b2b2b;
-    padding: 2vh 3vw;
-    color: #fff;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
-    
-}
-.footer-info {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin-bottom: 2vh;
-}
-
-.footer .logo {
-    font-size: 1.5rem; /* Используем rem для размера шрифта */
-    font-weight: bold;
-    color: #dd963f;
-    margin: 0 2vw 1vh 0;
-}
-
-.small-text {
-    display: inline;
-    font-size: 0.75rem; /* Используем rem для размера шрифта */
-    color: #ccc;
-}
-
-.contact-info p {
-    display: inline;
-    margin: 1vh 1vw;
-    float: left;
-    font-size: 1rem; /* Используем rem для размера шрифта */
-} 
-
-/* ФОРМА*/
 .booking-container {
-    display: flex;
-    max-width: 600px;
-    margin: auto;
-    background: #f3d8b3;
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    flex-direction: column;
-  }
-  
-  .booking-title {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    margin-top: 0.5rem;
-    font-size: 2.5rem;
-  }
-  
-  .form-column {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    flex-direction: row;
-  }
-  
-  .form-group {
-    flex: 1;
-  }
-  
-  .form-label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    float: right;
-  }
-  
-  .form-input {
-    padding: 10px;
-    border: 1px solid #c0c0c0;
-    border-radius: 5px;
-    background: #f7e9d5;
-    width: 180px;
-  }
+	display: flex;
+	max-width: 600px;
+	margin: auto;
+	background: #f3d8b3;
+	padding: 20px;
+	margin-bottom: 30px;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	flex-direction: column;
+}
 
-  .description {
-    display: flex;
-    justify-content:space-between;
-  }
-  
-  .form-input[type='number']::-webkit-outer-spin-button,
-  .form-input[type='number']::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-  }
-  
-  .booking-button {
-    background-color: #eab26e;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 10px;
-  }
-  
-  .booking-button:hover {
-    background-color: #c9995f;
-  }
+.booking-title {
+	text-align: center;
+	margin-bottom: 1.5rem;
+	margin-top: 0.5rem;
+	font-size: 2.5rem;
+}
 
-  .form-group.description {
-    
-    width: 100%; /* Занимает всю ширину */
-    margin-bottom: 15px; /* Отступ снизу */
+.form-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-row {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 15px;
+	flex-direction: row;
+}
+
+.form-group {
+	flex: 1;
+}
+
+.form-label {
+	margin-bottom: 5px;
+	font-weight: bold;
+	float: right;
+}
+
+.form-input {
+	padding: 10px;
+	border: 1px solid #c0c0c0;
+	border-radius: 5px;
+	background: #f7e9d5;
+	width: 180px;
+}
+
+.description {
+	display: flex;
+	justify-content: space-between;
+}
+
+.form-input[type='number']::-webkit-outer-spin-button,
+.form-input[type='number']::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+.booking-button {
+	background-color: #eab26e;
+	color: white;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.booking-button:hover {
+	background-color: #c9995f;
+}
+
+.form-group.description {
+	width: 100%;
+	margin-bottom: 15px;
 }
 
 .form-group.description .form-input {
-    width: 495px;
-    max-width: 100%; /* Ограничиваем ширину до границы формы */
-    box-sizing: border-box; /* Учитываем padding в ширине */
+	width: 495px;
+	max-width: 100%;
+	box-sizing: border-box;
 }
-  
 
-/* Медиа-запрос для ширины экрана 1140px и больше */
 @media (max-width: 1140px) {
-    .contact-info {
-        display: flex;
-        flex-direction: column; /* Размещаем элементы в колонку */
-        align-items: flex-start; /* Выравниваем элементы по левому краю */
-        width: 100%; /* Занимаем всю доступную ширину */
-        max-width: 300px; /* Увеличиваем место для контента */
-    }
+	div {
+		margin-bottom: 0vh;
+	}
 
-    .contact-info p {
-        display: block; /* Каждый элемент занимает всю ширину */
-        margin: 1vh 0; /* Увеличиваем отступы между элементами */
-        float: none; /* Убираем float */
-        width: 100%; /* Занимаем всю ширину контейнера */
-    }
+	.footer .logo {
+		margin: 0;
+	}
 
-    .footer {
-        padding: 0px;
-        display: flex;
-        align-items: center; /* Выравниваем все элементы футера по вертикали по центру */
-    }
-
-    .footer-info {
-        display: flex;
-        align-items: center; /* Выравниваем элементы внутри .footer-info по вертикали по центру */
-    }
-
-    .small-text {
-        display: flex;
-        align-items: center; /* Выравниваем текст по вертикали по центру */
-    }
-
-    div {
-        margin-bottom: 0vh;
-    }
-
-    .footer .logo {
-        margin: 0;
-    }
-
-    .footer {
-        justify-content: center; 
-        
-    }
-    
+	.footer {
+		justify-content: center;
+	}
 }
 
 @media (max-width: 901px) {
-    html {
-        font-size: 12px; /* Устанавливаем базовый размер шрифта */
-    }
+	html {
+		font-size: 12px;
+	}
 }
 
 @media (max-width: 800px) {
-    .info {
-        max-width: 60vw;
-        padding: 1vh 1vw;
-        margin: 2vh auto;
-    }
+	.info {
+		max-width: 60vw;
+		padding: 1vh 1vw;
+		margin: 2vh auto;
+	}
 }
 
 @media (max-width: 720px) {
-    html {
-        font-size: 11px; /* Уменьшаем базовый размер шрифта для мобильных устройств */
-    }
+	html {
+		font-size: 11px;
+	}
 
-    .image-map-container {
-        flex-direction: column; /* Размещаем элементы в колонку (изображение сверху, карта снизу) */
-        align-items: center; /* Центрируем элементы по горизонтали */
-        gap: 3vh; /* Увеличиваем отступ между изображением и картой */
-    }
+	.image-map-container {
+		flex-direction: column;
+		align-items: center;
+		gap: 3vh;
+	}
 
-    img, iframe {
-        width: 70vw; /* Увеличиваем ширину изображения и карты */
-        height: 40vw; /* Увеличиваем высоту изображения и карты */
-    }
+	img,
+	iframe {
+		width: 70vw;
+		height: 40vw;
+	}
 
-    .info {
-        max-width: 66vw;
-    }
-    .info p {
-        font-size: 1.1rem;
-    }
-
-    .contact-info p {
-        padding: 0vh;
-    }
-
-    .contact-info {
-        padding-top: 1vh;
-    }
-
-    .small-text {
-        padding: 1vh;
-    }
-}
-
-@media (max-width: 700px) {
-    .footer {
-        flex-direction: column;
-        align-items: center;
-        padding: 2vh 5vw;
-    }
-
-    .footer .logo {
-        margin-bottom: 0vh;
-    }
-
-    .contact-info {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 300px;
-        margin: 0vh;
-    }
-
-    .contact-info p {
-        padding: 1vh;
-        margin: 0vh;
-    }
-
-    .small-text {
-
-        width: 100%;
-        margin-top: 0vh;
-    }
+	.info {
+		max-width: 66vw;
+	}
+	.info p {
+		font-size: 1.1rem;
+	}
 }
 
 @media (max-width: 600px) {
-
-    html {
-        font-size: 10px; /* Уменьшаем базовый размер шрифта для мобильных устройств */
-    }
-    .info p {
-        width: 100%; /* Параграфы занимают всю ширину контейнера */
-        font-size: 1.2rem; /* Увеличиваем размер шрифта для лучшей читаемости */
-        margin: 1vh 0; /* Отступы между параграфами */
-        padding: 0vh; /* Отступы внутри параграфа */
-    }
-
-    .footer-info p {
-        font-size: 10px;
-        margin: 0; 
-    }
-
-    .contact-info p {
-        font-size: 1.2rem;
-    }
-
-}
-
-@media (max-width: 470px) {
-    html {
-        font-size: 9px; 
-    }
-    .footer-info{
-        display: flex;
-        flex-direction: column-reverse;
-        align-items:flex-start;
-    }
-
+	html {
+		font-size: 10px;
+	}
+	.info p {
+		width: 100%;
+		font-size: 1.2rem;
+		margin: 1vh 0;
+		padding: 0vh;
+	}
 }
