@@ -39,47 +39,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		modal.style.display = 'none'
 	})
 
-	// Управление масштабированием
+	// Сброс масштаба и позиции
 	resetZoomBtn.addEventListener('click', function () {
 		currentScale = 1
 		translateX = 0
 		translateY = 0
-		updateImageTransform()
-	})
-
-	// Масштабирование колесиком мыши
-	modalImg.addEventListener('wheel', function (e) {
-		e.preventDefault()
-
-		// Получаем позицию курсора относительно изображения
-		const rect = modalImg.getBoundingClientRect()
-		const mouseX = e.clientX - rect.left
-		const mouseY = e.clientY - rect.top
-
-		// Сохраняем относительные координаты до масштабирования
-		const relX = (mouseX - translateX) / currentScale
-		const relY = (mouseY - translateY) / currentScale
-
-		if (e.deltaY < 0) {
-			// Скролл вверх - увеличение
-			if (currentScale < maxScale) {
-				currentScale += scaleStep
-			}
-		} else {
-			// Скролл вниз - уменьшение
-			if (currentScale > minScale) {
-				currentScale -= scaleStep
-			}
-		}
-
-		// Пересчитываем позицию для сохранения точки под курсором
-		const newTranslateX = mouseX - relX * currentScale
-		const newTranslateY = mouseY - relY * currentScale
-
-		// Применяем новые координаты с проверкой границ
-		translateX = newTranslateX
-		translateY = newTranslateY
-		checkBoundaries()
 		updateImageTransform()
 	})
 
@@ -109,10 +73,61 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	document.addEventListener('mouseup', function () {
 		isDragging = false
-		modalImg.style.cursor = 'grab'
+		modalImg.style.cursor = currentScale > 1 ? 'grab' : 'default'
 		// Сохраняем последнюю позицию для следующего перемещения
 		lastTranslateX = translateX
 		lastTranslateY = translateY
+	})
+
+	// Управление масштабом через клавиши
+	document.addEventListener('keydown', function (e) {
+		if (modal.style.display !== 'block') return
+
+		// Закрытие по ESC
+		if (e.key === 'Escape') {
+			modal.style.display = 'none'
+			return
+		}
+
+		// Масштабирование только если модальное окно открыто
+		const rect = modalImg.getBoundingClientRect()
+		const centerX = rect.width / 2
+		const centerY = rect.height / 2
+
+		// Сохраняем относительные координаты центра
+		const relX = (centerX - translateX) / currentScale
+		const relY = (centerY - translateY) / currentScale
+
+		if (e.key === '+' || e.key === '=') {
+			// Увеличение
+			e.preventDefault()
+			if (currentScale < maxScale) {
+				currentScale += scaleStep
+				// Пересчитываем позицию для сохранения центра
+				translateX = centerX - relX * currentScale
+				translateY = centerY - relY * currentScale
+				checkBoundaries()
+				updateImageTransform()
+			}
+		} else if (e.key === '-' || e.key === '_') {
+			// Уменьшение
+			e.preventDefault()
+			if (currentScale > minScale) {
+				currentScale -= scaleStep
+				// Пересчитываем позицию для сохранения центра
+				translateX = centerX - relX * currentScale
+				translateY = centerY - relY * currentScale
+				checkBoundaries()
+				updateImageTransform()
+			}
+		} else if (e.key === '0') {
+			// Сброс масштаба
+			e.preventDefault()
+			currentScale = 1
+			translateX = 0
+			translateY = 0
+			updateImageTransform()
+		}
 	})
 
 	// Проверка границ перемещения
@@ -134,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		} else {
 			translateX = 0
 		}
-		в
+
 		if (scaledHeight > modalRect.height) {
 			translateY = Math.min(Math.max(translateY, -maxTranslateY), maxTranslateY)
 		} else {
@@ -145,14 +160,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Обновление трансформации изображения
 	function updateImageTransform() {
 		modalImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`
+		modalImg.style.cursor = currentScale > 1 ? 'grab' : 'default'
 	}
-
-	// Закрытие по ESC
-	document.addEventListener('keydown', function (e) {
-		if (e.key === 'Escape' && modal.style.display === 'block') {
-			modal.style.display = 'none'
-		}
-	})
 
 	// Инициализация курсора
 	modalImg.style.cursor = 'grab'
