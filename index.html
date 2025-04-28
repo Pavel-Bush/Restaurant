@@ -21,12 +21,12 @@
 			<nav class="navbar">
 				<div class="logo">Resta</div>
 				<ul class="nav-links">
-					<li><a href="./index.html">Home</a></li>
-					<li><a href="./menu.html">Menu</a></li>
-					<li><a href="./about.html">About</a></li>
-					<li><a href="./contacts.html">Contacts</a></li>
+					<li><a href="./index.html">Главная</a></li>
+					<li><a href="./menu.html">Меню</a></li>
+					<li><a href="./about.html">О нас</a></li>
+					<li><a href="./contacts.html">Контакты</a></li>
 				</ul>
-				<a href="#book" class="book-table">Book a table</a>
+				<a href="#book" class="book-table">Бронь</a>
 			</nav>
 
 			<div class="hamburger-menu">
@@ -36,10 +36,10 @@
 				</label>
 
 				<ul class="menu__box">
-					<li><a class="menu__item" href="./index.html">Home</a></li>
-					<li><a class="menu__item" href="./menu.html">Menu</a></li>
-					<li><a class="menu__item" href="./about.html">About</a></li>
-					<li><a class="menu__item" href="./contacts.html">Contacts</a></li>
+					<li><a class="menu__item" href="./index.html">Главная</a></li>
+					<li><a class="menu__item" href="./menu.html">Меню</a></li>
+					<li><a class="menu__item" href="./about.html">О нас</a></li>
+					<li><a class="menu__item" href="./contacts.html">Контакты</a></li>
 				</ul>
 			</div>
 		</header>
@@ -48,32 +48,52 @@
 			<div class="flex-box flex-row">
 				<div>
 					<div class="about-text">
-						<h3>Sed ut perspiciatis unde omnis iste natus</h3>
+						<h3>Добро пожаловать в мир высокой кухни</h3>
 
 						<p>
-							All this unpleasant mistake will bring us back to the painful
-							complaint, everything will open up, and it will turn out that it
-							is from a real inventor and almost the same thing. A photo booth
-							in Stamptown, an everything banksy tote bag, a small batch of
-							freegan bandwidth movies. Photo booth with seitan routine craft
-							beer soup and 8-bit kale chips create chillwave deep snacks vol.
-							The delegates are arriving, Martha Pinterest.
+							Заходите к нам! У нас тут вкусно и уютно. Представьте: классная
+							атмосфера, а главное – еда! Мы очень любим готовить и делаем это
+							от души. Наши повара – настоящие профи, и они творят чудеса из
+							самых свежих продуктов. Хотите попробовать что-то особенное? Тогда
+							вам к нам!
 						</p>
 						<ul class="food_list no-bullets">
 							<li>
 								<img src="img/svg_icon/salad.svg" alt="" />
-								<span>Fresh Ingredients</span>
+								<span>Свежие продукты</span>
 							</li>
 							<li>
 								<img src="img/svg_icon/tray.svg" alt="" />
-								<span>Expert cooker</span>
+								<span>Профессиональные повара</span>
 							</li>
 						</ul>
 					</div>
 				</div>
 				<div>
 					<div class="about_img">
-						<img src="img/about/cooker.png" alt="" />
+						<div class="slider">
+							<img class="slider-img" src="img/about/1.webp" alt="" />
+							<img class="slider-img" src="img/about/2.webp" alt="" />
+							<img class="slider-img" src="img/about/about_3.png" alt="" />
+
+							<div>
+								<img
+									style="opacity: 1; height: 20px"
+									class="prev controlls"
+									src="img/about/left.png"
+									alt=""
+								/>
+							</div>
+
+							<div>
+								<img
+									style="opacity: 1; height: 20px"
+									class="next controlls"
+									src="img/about/right.png"
+									alt=""
+								/>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -81,7 +101,7 @@
 
 		<div class="gallery_area">
 			<div class="section_title text-center">
-				<h3>Photo Gallery</h3>
+				<h3>Галерея</h3>
 			</div>
 			<div class="gallery-wrapper">
 				<div class="single_gallery big">
@@ -106,31 +126,37 @@
 		</div>
 
 		<div class="booking-container" id="book">
-			<h1 class="booking-title">Book a Table</h1>
+			<h1 class="booking-title">Бронь</h1>
 			<form class="booking-form">
 				<div class="form-row">
 					<div class="form-group">
 						<label class="form-label" for="name">
-							Your Name
+							Ваше имя
 							<input
 								class="form-input"
 								type="text"
 								id="name"
 								name="name"
 								placeholder="Enter your name"
+								maxlength="20"
+								pattern="[A-Za-z\s]+"
+								title="Only letters and spaces allowed"
 								required
 							/>
 						</label>
 					</div>
 					<div class="form-group">
 						<label class="form-label" for="phone">
-							Phone no.
+							Номер
 							<input
 								class="form-input"
 								type="tel"
 								id="phone"
 								name="phone"
 								placeholder="Enter your phone number"
+								maxlength="11"
+								pattern="[0-9]{11}"
+								title="Please enter exactly 11 digits"
 								required
 							/>
 						</label>
@@ -139,7 +165,7 @@
 				<div class="form-row">
 					<div class="form-group">
 						<label class="form-label" for="date">
-							Date
+							Дата
 							<input
 								class="form-input"
 								type="date"
@@ -151,7 +177,7 @@
 					</div>
 					<div class="form-group">
 						<label class="form-label" for="person">
-							Person
+							Гостей
 							<input
 								class="form-input"
 								type="number"
@@ -159,38 +185,71 @@
 								name="person"
 								min="1"
 								max="20"
+								maxlength="2"
 								placeholder="1-20"
+								oninput="this.value=this.value.slice(0,2)"
 								required
 							/>
 						</label>
 					</div>
 				</div>
-				<button class="booking-button" type="submit">Book</button>
+				<button class="booking-button" type="submit">Забронировать</button>
 			</form>
 		</div>
+
+		<script>
+			// Set date restrictions
+			document.addEventListener('DOMContentLoaded', function () {
+				const dateInput = document.getElementById('date')
+				const today = new Date()
+				const maxDate = new Date()
+				maxDate.setMonth(today.getMonth() + 1) // One month from today
+
+				// Format dates for input min/max attributes
+				const formatDate = date => {
+					const year = date.getFullYear()
+					const month = String(date.getMonth() + 1).padStart(2, '0')
+					const day = String(date.getDate()).padStart(2, '0')
+					return `${year}-${month}-${day}`
+				}
+
+				dateInput.min = formatDate(today)
+				dateInput.max = formatDate(maxDate)
+
+				// Prevent typing in person field beyond 2 digits
+				document
+					.getElementById('person')
+					.addEventListener('input', function (e) {
+						if (this.value.length > 2) {
+							this.value = this.value.slice(0, 2)
+						}
+					})
+			})
+		</script>
 
 		<footer class="footer">
 			<div class="logo">Resta</div>
 			<div class="footer-info">
 				<p class="small-text">
-					DRUGI Restaurant-Brewery LLC, UNP 192135107<br />
-					40 Kulman Street, Minsk, 220100, Republic of Belarus<br />
-					Registration of the Unified State Register of Legal Entities:
-					04.10.2013, Minsk City Executive Committee, registration number
+					ООО "Ресторан-пивоварня "Resta", ОГРН 192135107<br />
+					Республика Беларусь, 220100, Минск, ул. Кульмана, 40<br />
+					Внесен в Единый государственный реестр юридических лиц: 04.10.2013,
+					Минский городской исполнительный комитет, регистрационный номер
 					192135107<br />
-					License: 05/07/2014, Minsk city Executive Committee, EPL number
-					40200000013133<br />
-					Trade Register of the Republic of Belarus: 05/07/2014
+					Лицензия: 07.05.2014, Минский городской исполнительный комитет,
+					регистрационный номер 40200000013133<br />
+					Торговый реестр Республики Беларусь: 05/07/2014
 				</p>
 				<div class="contact-info">
-					<p><strong>Email:</strong> info@zaslonov.by</p>
-					<p><strong>Phone:</strong> +375 (29) 295-26-26</p>
+					<p><strong>Почта:</strong> info@zaslonov.by</p>
+					<p><strong>Телефон:</strong> +375 (29) 295-26-26</p>
 					<p>
-						<strong>Address:</strong> Minsk district, Zhdanovichi village,
-						Zvezdnaya Street, 18
+						<strong>Адрес:</strong> Минский район, деревня Ждановичи, улица
+						Звездная, 18
 					</p>
 				</div>
 			</div>
 		</footer>
+		<script src="slider.js"></script>
 	</body>
 </html>
