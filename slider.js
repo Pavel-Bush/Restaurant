@@ -1,48 +1,59 @@
 const images = document.querySelectorAll('.slider-img')
 const controlls = document.querySelectorAll('.controlls')
+const indicatorsContainer = document.querySelector('.slider-indicators')
 let imageIndex = 0
 let slideInterval
 
+// Создаем индикаторы
+function createIndicators() {
+	images.forEach((_, index) => {
+		const indicator = document.createElement('div')
+		indicator.classList.add('indicator')
+		if (index === 0) indicator.classList.add('active')
+		indicator.addEventListener('click', () => {
+			show(index)
+			startSlideTimer()
+		})
+		indicatorsContainer.appendChild(indicator)
+	})
+}
+
+function updateIndicators() {
+	const indicators = document.querySelectorAll('.indicator')
+	indicators.forEach((indicator, index) => {
+		indicator.classList.toggle('active', index === imageIndex)
+	})
+}
+
 function show(index) {
-	images[imageIndex].classList.remove('active')
+	images.forEach(img => img.classList.remove('active'))
 	images[index].classList.add('active')
 	imageIndex = index
+	updateIndicators()
 }
 
 function startSlideTimer() {
-	// Очищаем предыдущий интервал, если он был
 	clearInterval(slideInterval)
-	// Устанавливаем новый интервал
 	slideInterval = setInterval(() => {
-		let nextIndex = imageIndex + 1
-		if (nextIndex >= images.length) {
-			nextIndex = 0
-		}
+		const nextIndex = (imageIndex + 1) % images.length
 		show(nextIndex)
-	}, 5000) // 5 секунд
+	}, 5000)
 }
 
-controlls.forEach(e => {
-	e.addEventListener('click', event => {
+controlls.forEach(control => {
+	control.addEventListener('click', event => {
 		if (event.target.classList.contains('prev')) {
-			let index = imageIndex - 1
-			if (index < 0) {
-				index = images.length - 1
-			}
+			const index = (imageIndex - 1 + images.length) % images.length
 			show(index)
 		} else if (event.target.classList.contains('next')) {
-			let index = imageIndex + 1
-			if (index >= images.length) {
-				index = 0
-			}
+			const index = (imageIndex + 1) % images.length
 			show(index)
 		}
-
-		// Сбрасываем таймер при ручном переключении
 		startSlideTimer()
 	})
 })
 
-// Инициализация слайдера и таймера
+// Инициализация
+createIndicators()
 show(imageIndex)
 startSlideTimer()
