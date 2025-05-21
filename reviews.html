@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<title>Отзывы - Restaurant</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link rel="stylesheet" href="css/footer.css" />
+		<link rel="stylesheet" href="css/reviews.css" />
+		<link rel="stylesheet" href="css/nav_burg.css" />
+
+		<!-- Добавляем React через CDN -->
+		<script
+			crossorigin
+			src="https://unpkg.com/react@18/umd/react.development.js"
+		></script>
+		<script
+			crossorigin
+			src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+		></script>
+		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<nav class="navbar">
+				<div class="logo">Resta</div>
+				<ul class="nav-links">
+					<li><a href="./index.html">Главная</a></li>
+					<li><a href="./menu.html">Меню</a></li>
+					<li><a href="./about.html">О нас</a></li>
+					<li><a href="./contacts.html">Контакты</a></li>
+					<li><a href="./reviews.html">Отзывы</a></li>
+				</ul>
+				<a href="#book" class="book-table">Бронь</a>
+			</nav>
+
+			<div class="hamburger-menu">
+				<input id="menu__toggle" type="checkbox" />
+				<label class="menu__btn" for="menu__toggle">
+					<span></span>
+				</label>
+
+				<ul class="menu__box">
+					<li><a class="menu__item" href="./index.html">Главная</a></li>
+					<li><a class="menu__item" href="./menu.html">Меню</a></li>
+					<li><a class="menu__item" href="./about.html">О нас</a></li>
+					<li><a class="menu__item" href="./contacts.html">Контакты</a></li>
+					<li><a class="menu__item" href="./reviews.html">Отзывы</a></li>
+				</ul>
+			</div>
+		</header>
+
+		<main>
+			<div id="reviews-app"></div>
+		</main>
+
+		<footer class="footer">
+			<div class="logo">Resta</div>
+			<div class="footer-info">
+				<p class="small-text">
+					ООО "Ресторан-пивоварня "Resta", ОГРН 192135107<br />
+					Республика Беларусь, 220100, Минск, ул. Кульмана, 40<br />
+					Внесен в Единый государственный реестр юридических лиц: 04.10.2013,
+					Минский городской исполнительный комитет, регистрационный номер
+					192135107<br />
+					Лицензия: 07.05.2014, Минский городской исполнительный комитет,
+					регистрационный номер 40200000013133<br />
+					Торговый реестр Республики Беларусь: 05/07/2014
+				</p>
+				<div class="contact-info">
+					<p><strong>Почта:</strong> info@zaslonov.by</p>
+					<p><strong>Телефон:</strong> +375 (29) 295-26-26</p>
+					<p>
+						<strong>Адрес:</strong> Минский район, деревня Ждановичи, улица
+						Звездная, 18
+					</p>
+				</div>
+			</div>
+		</footer>
+
+		<!-- React приложение для отзывов -->
+		<script type="text/babel">
+			const ReviewsApp = () => {
+				// Константы для ограничений
+				const MAX_USER_REVIEWS = 10 // Максимум отзывов на пользователя
+				const MAX_STORAGE_SIZE = 4 * 1024 * 1024 // 4MB (оставляем запас от 5MB лимита)
+
+				const [reviews, setReviews] = React.useState(() => {
+					try {
+						const savedReviews = localStorage.getItem('restaurantReviews')
+						return savedReviews
+							? JSON.parse(savedReviews)
+							: [
+									{
+										id: 1,
+										name: 'Анна',
+										text: 'Отличный ресторан!',
+										rating: 5,
+									},
+									{
+										id: 2,
+										name: 'Иван',
+										text: 'Хорошее обслуживание.',
+										rating: 4,
+									},
+							  ]
+					} catch (e) {
+						console.error('Ошибка загрузки отзывов:', e)
+						return []
+					}
+				})
+
+				// Подсчет отзывов текущего пользователя
+				const userReviewsCount = reviews.filter(
+					review => review.userId === localStorage.getItem('reviewUserId')
+				).length
+
+				const [newReview, setNewReview] = React.useState({
+					name: '',
+					text: '',
+					rating: 5,
+				})
+
+				const [errors, setErrors] = React.useState({
+					name: '',
+					text: '',
+					limit: '',
+				})
+
+				// Загрузка имени пользователя
+				React.useEffect(() => {
+					try {
+						const savedName = localStorage.getItem('reviewUserName')
+						if (savedName) {
+							setNewReview(prev => ({ ...prev, name: savedName }))
+						}
+					} catch (e) {
+						console.error('Ошибка загрузки имени:', e)
+					}
+				}, [])
+
+				// Проверка лимита хранилища
+				const checkStorageLimit = () => {
+					try {
+						const currentSize = JSON.stringify(localStorage).length
+						return currentSize >= MAX_STORAGE_SIZE
+					} catch (e) {
+						console.error('Ошибка проверки хранилища:', e)
+						return true
+					}
+				}
+
+				// Проверка лимита отзывов пользователя
+				const checkUserReviewLimit = userId => {
+					return (
+						reviews.filter(r => r.userId === userId).length >= MAX_USER_REVIEWS
+					)
+				}
+
+				// Санитизация ввода (базовая защита от XSS)
+				const sanitizeInput = input => {
+					return input
+						.replace(/</g, '&lt;')
+						.replace(/>/g, '&gt;')
+						.replace(/"/g, '&quot;')
+						.replace(/'/g, '&#39;')
+				}
+
+				const validateName = name => {
+					if (!name.trim()) return 'Имя обязательно'
+					if (name.length > 30) return 'Не более 30 символов'
+					if (!/^[a-zA-Zа-яА-ЯёЁ\s-]+$/.test(name))
+						return 'Только буквы и дефисы'
+					return ''
+				}
+
+				const validateText = text => {
+					if (!text.trim()) return 'Текст обязателен'
+					if (text.length > 300) return 'Не более 300 символов'
+					return ''
+				}
+
+				const handleInputChange = e => {
+					const { name, value } = e.target
+					const sanitizedValue = sanitizeInput(value.replace(/\n/g, ' '))
+
+					setNewReview({
+						...newReview,
+						[name]: sanitizedValue,
+					})
+
+					setErrors({
+						...errors,
+						[name]:
+							name === 'name'
+								? validateName(sanitizedValue)
+								: validateText(sanitizedValue),
+						limit: '',
+					})
+				}
+
+				const handleSubmit = e => {
+					e.preventDefault()
+
+					const nameError = validateName(newReview.name)
+					const textError = validateText(newReview.text)
+
+					try {
+						const userId =
+							localStorage.getItem('reviewUserId') || generateUserId()
+
+						if (checkStorageLimit()) {
+							setErrors(prev => ({
+								...prev,
+								limit: 'Хранилище переполнено. Очистите старые отзывы.',
+							}))
+							return
+						}
+
+						if (checkUserReviewLimit(userId)) {
+							setErrors(prev => ({
+								...prev,
+								limit: `Максимум ${MAX_USER_REVIEWS} отзывов на пользователя`,
+							}))
+							return
+						}
+
+						if (!nameError && !textError) {
+							const reviewToAdd = {
+								id: Date.now(),
+								name: newReview.name.trim(),
+								text: newReview.text.trim(),
+								rating: parseInt(newReview.rating),
+								userId: userId,
+								createdAt: new Date().toISOString(),
+							}
+
+							const updatedReviews = [reviewToAdd, ...reviews]
+
+							localStorage.setItem('reviewUserName', newReview.name.trim())
+							localStorage.setItem('reviewUserId', userId)
+							localStorage.setItem(
+								'restaurantReviews',
+								JSON.stringify(updatedReviews)
+							)
+
+							setReviews(updatedReviews)
+							setNewReview(prev => ({ ...prev, text: '', rating: 5 }))
+							setErrors({ name: '', text: '', limit: '' })
+						} else {
+							setErrors({ name: nameError, text: textError, limit: '' })
+						}
+					} catch (e) {
+						console.error('Ошибка сохранения:', e)
+						setErrors(prev => ({
+							...prev,
+							limit: 'Ошибка сохранения. Попробуйте позже.',
+						}))
+					}
+				}
+
+				const generateUserId = () =>
+					'user_' + Math.random().toString(36).substr(2, 9)
+
+				const isUserReview = review => {
+					const userId = localStorage.getItem('reviewUserId')
+					return userId && review.userId === userId
+				}
+
+				const handleDeleteReview = reviewId => {
+					try {
+						const updatedReviews = reviews.filter(
+							review => review.id !== reviewId
+						)
+						setReviews(updatedReviews)
+						localStorage.setItem(
+							'restaurantReviews',
+							JSON.stringify(updatedReviews)
+						)
+					} catch (e) {
+						console.error('Ошибка удаления:', e)
+						setErrors(prev => ({ ...prev, limit: 'Ошибка удаления' }))
+					}
+				}
+				return (
+					<div className='reviews-container'>
+						<h1>Отзывы о нашем ресторане</h1>
+
+						<div className='add-review'>
+							<h2>Оставить отзыв</h2>
+							<form onSubmit={handleSubmit}>
+								<div className='form-group'>
+									<label htmlFor='name'>Ваше имя:</label>
+									<input
+										type='text'
+										id='name'
+										name='name'
+										value={newReview.name}
+										onChange={handleInputChange}
+										maxLength='30'
+										className={errors.name ? 'error' : ''}
+									/>
+									{errors.name && (
+										<span className='error-message'>{errors.name}</span>
+									)}
+									<div className='char-counter'>{newReview.name.length}/30</div>
+								</div>
+
+								<div className='form-group'>
+									<label htmlFor='rating'>Оценка:</label>
+									<select
+										id='rating'
+										name='rating'
+										value={newReview.rating}
+										onChange={handleInputChange}
+									>
+										<option value='5'>5 ★</option>
+										<option value='4'>4 ★</option>
+										<option value='3'>3 ★</option>
+										<option value='2'>2 ★</option>
+										<option value='1'>1 ★</option>
+									</select>
+								</div>
+
+								<div className='form-group'>
+									<label htmlFor='text'>Ваш отзыв:</label>
+									<textarea
+										id='text'
+										name='text'
+										value={newReview.text}
+										onChange={handleInputChange}
+										maxLength='300'
+										className={errors.text ? 'error' : ''}
+									></textarea>
+									{errors.text && (
+										<span className='error-message'>{errors.text}</span>
+									)}
+									<div className='char-counter'>
+										{newReview.text.length}/300
+									</div>
+								</div>
+
+								<button
+									type='submit'
+									className='submit-btn'
+									disabled={!!errors.name || !!errors.text}
+								>
+									Отправить отзыв
+								</button>
+							</form>
+						</div>
+
+						<div className='reviews-progress'>
+							<div className='progress-bar-container'>
+								<div
+									className={`progress-bar ${
+										userReviewsCount < MAX_USER_REVIEWS / 2
+											? 'low'
+											: userReviewsCount < MAX_USER_REVIEWS * 0.8
+											? 'medium'
+											: 'high'
+									}`}
+									style={{
+										width: `${Math.min(
+											(userReviewsCount / MAX_USER_REVIEWS) * 100,
+											100
+										)}%`,
+									}}
+								></div>
+							</div>
+							<div className='progress-text'>
+								Отзывов: {userReviewsCount}/{MAX_USER_REVIEWS} (
+								{Math.min(
+									Math.round((userReviewsCount / MAX_USER_REVIEWS) * 100),
+									100
+								)}
+								%)
+							</div>
+						</div>
+
+						{errors.limit && (
+							<div className='error-message global-error'>{errors.limit}</div>
+						)}
+
+						<div className='reviews-list'>
+							{reviews.map(review => (
+								<div key={review.id} className='review-card'>
+									<div className='review-header'>
+										<div>
+											<h3>{review.name}</h3>
+											<div className='rating'>
+												{'★'.repeat(review.rating)}
+												{'☆'.repeat(5 - review.rating)}
+											</div>
+											<div className='review-date'>
+												{new Date(review.createdAt).toLocaleDateString()}
+											</div>
+										</div>
+										{isUserReview(review) && (
+											<button
+												className='delete-btn'
+												onClick={() => handleDeleteReview(review.id)}
+												title='Удалить отзыв'
+											>
+												×
+											</button>
+										)}
+									</div>
+									<p dangerouslySetInnerHTML={{ __html: review.text }}></p>
+								</div>
+							))}
+						</div>
+					</div>
+				)
+			}
+
+			const root = ReactDOM.createRoot(document.getElementById('reviews-app'))
+			root.render(<ReviewsApp />)
+		</script>
+	</body>
+</html>
